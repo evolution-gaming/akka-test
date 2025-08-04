@@ -1,7 +1,7 @@
 # akka-test 
 [![Build Status](https://github.com/evolution-gaming/akka-test/workflows/CI/badge.svg)](https://github.com/evolution-gaming/akka-test/actions?query=workflow%3ACI)
 [![Test Coverage Status](https://coveralls.io/repos/github/evolution-gaming/akka-test/badge.svg?branch=master)](https://coveralls.io/github/evolution-gaming/akka-test?branch=master)
-[![Codacy](https://api.codacy.com/project/badge/Grade/799b059200e14801ac572ca5b86cc48e)](https://app.codacy.com/gh/evolution-gaming/akka-test/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/78a820acd3064f91b5fd97d2c9087a79)](https://app.codacy.com/gh/evolution-gaming/akka-test/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Version](https://img.shields.io/badge/version-click-blue)](https://evolution.jfrog.io/artifactory/api/search/latestVersion?g=com.evolutiongaming&a=akka-test-actor_2.13&repos=public)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellowgreen.svg)](https://opensource.org/licenses/MIT)
 
