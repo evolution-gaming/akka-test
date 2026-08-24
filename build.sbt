@@ -17,11 +17,8 @@ lazy val commonSettings = Seq(
 )
 
 val aliases: Seq[sbt.Def.Setting[?]] =
-  addCommandAlias("fmt", "all scalafmtAll scalafmtSbt") ++
-    addCommandAlias(
-      "check",
-      "all scalafmtCheckAll scalafmtSbtCheck versionPolicyCheck Compile/doc",
-    ) ++
+  addCommandAlias("fmt", "scalafmtRepo") ++
+    addCommandAlias("check", "all scalafmtCheckRepo versionPolicyCheck Compile/doc") ++
     addCommandAlias("build", "all test package")
 
 lazy val root = project.in(file("."))
@@ -52,10 +49,17 @@ lazy val http = projectMatrix.in(file("http"))
   .jvmPlatform(
     scalaVersions = crossScalaVersionsWithout3Val,
   )
-  .settings(libraryDependencies ++= Seq(
-    Akka.default.actor,
-    Akka.default.stream,
-    AkkaHttp.default.core,
-    scalatest,
-    AkkaHttp.older.testkit % Test,
-  ))
+  // TODO remove the skipping after 0.3.1 release
+  .settings(
+    Compile / skip := scalaVersion.value.startsWith("3."),
+    Test / testOptions := Seq(Tests.Filter(s => !scalaVersion.value.startsWith("3."))),
+  )
+  .settings(
+    libraryDependencies ++= Seq(
+      Akka.default.actor,
+      Akka.default.stream,
+      AkkaHttp.default.core.cross(CrossVersion.for3Use2_13),
+      scalatest,
+      (AkkaHttp.older.testkit % Test).cross(CrossVersion.for3Use2_13),
+    ),
+  )
